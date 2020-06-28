@@ -19,8 +19,8 @@ export default class Chimplist {
   }
 
   // getLists - get all the lists
-  getLists = async (): Promise<any> => {
-    const promise = ACTIONS.getLists(this.API_KEY, this.DATA_CENTER);
+  getAllLists = async (): Promise<any> => {
+    const promise = ACTIONS.getAllLists(this.API_KEY, this.DATA_CENTER);
     return promise;
   };
 
@@ -30,10 +30,27 @@ export default class Chimplist {
     return promise;
   };
 
-  test = (): void => {
-    console.log('From CLASS', this.API_KEY);
-    console.log('From CLASS', this.DATA_CENTER);
-    TestAPI(this.API_KEY, this.DATA_CENTER);
+  // createList - create a new list
+  createList = async (options): Promise<any> => {
+    const promise = ACTIONS.createList(this.API_KEY, this.DATA_CENTER, options);
+    return promise;
+  };
+
+  // updateList - update a specific list
+  updateList = async (list_id: string, options): Promise<any> => {
+    const promise = ACTIONS.updateList(
+      this.API_KEY,
+      this.DATA_CENTER,
+      list_id,
+      options
+    );
+    return promise;
+  };
+
+  // deleteList - delete a specific list
+  deleteList = async (list_id: string): Promise<any> => {
+    const promise = ACTIONS.deleteList(this.API_KEY, this.DATA_CENTER, list_id);
+    return promise;
   };
 }
 
@@ -52,8 +69,46 @@ const Chimp = new Chimplist(API_KEY);
 // @ts-ignore
 const list_id: string = process.env.LIST_ID;
 
-Chimp.getList(list_id)
-  .then((res) => console.log('YOUSUCK', res.data.name))
-  .catch((error) => console.log('YOU FUCKEDUP', error));
+const options = {
+  name: 'List Without JSON',
+  contact: {
+    company: 'Shikhar Company',
+    address1: 'Test List',
+    address2: 'Test List',
+    city: 'Test List',
+    state: 'Test List',
+    zip: 'Test List',
+    country: 'Test List',
+    phone: 'Test List'
+  },
+  permission_reminder: 'You subbed to this list bruh',
+  campaign_defaults: {
+    from_name: 'Test List',
+    from_email: 'shikhar1@gmail.com',
+    subject: 'Test List',
+    language: 'Test List'
+  },
+  email_type_option: true
+};
 
-Chimp.test();
+// Chimp.getAllLists()
+//   .then((res) =>
+//     console.log('Running getAllLists() !!', res.data.lists[0].name)
+//   )
+//   .catch((error) => console.log('YOU FUCKEDUP', error));
+
+// Chimp.getList('1e7b476120')
+//   .then((res) => console.log('Running getList() !!', res.data.name))
+//   .catch((error) => console.log('YOU FUCKEDUP', error));
+
+// Chimp.createList(options)
+//   .then((res) => console.log('Running createList() !!', res))
+//   .catch((error) => console.log('YOU FUCKEDUP', error));
+
+// Chimp.updateList('1e7b476120', options)
+//   .then((res) => console.log('Running updateList() !! ', res))
+//   .catch((error) => console.log('YOU FUCKEDUP', error));
+
+// Chimp.deleteList('1e7b476120')
+//   .then((res) => console.log('Running deleeList() !!', res))
+//   .catch((error) => console.log('YOU FUCKEDUP', error));
