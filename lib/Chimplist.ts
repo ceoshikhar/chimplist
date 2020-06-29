@@ -107,45 +107,35 @@ const Chimp = new Chimplist(API_KEY);
 //@ts-ignore
 const list_id: string = process.env.LIST_ID;
 
-// const options = {
-//   name: 'updateList() works',
-//   contact: {
-//     company: 'Shikhar Company',
-//     address1: 'Test List',
-//     address2: 'Test List',
-//     city: 'Test List',
-//     state: 'Test List',
-//     zip: 'Test List',
-//     country: 'Test List',
-//     phone: 'Test List'
-//   },
-//   permission_reminder: 'You subbed to this list bruh',
-//   campaign_defaults: {
-//     from_name: 'Test List',
-//     from_email: 'shikhar1@gmail.com',
-//     subject: 'Test List',
-//     language: 'Test List'
-//   },
-//   email_type_option: true
-// };
-
-// Chimp.getAllLists()
-//   .then((res) =>
-//     console.log('Running getAllLists() !!', res.data.lists[0].name)
-//   )
-//   .catch((error) => console.log('YOU FUCKEDUP', error));
-
-// Chimp.getList('dee60118e4')
-//   .then((res) => console.log('Running getList() !!', res.data.name))
-//   .catch((error) => console.log('YOU FUCKEDUP', error));
+const options = {
+  name: 'Test List',
+  contact: {
+    company: 'Test List',
+    address1: 'Test List',
+    address2: 'Test List',
+    city: 'Test List',
+    state: 'Test List',
+    zip: 'Test List',
+    country: 'Test List',
+    phone: 'Test List'
+  },
+  permission_reminder: 'Test List',
+  campaign_defaults: {
+    from_name: 'Test List',
+    from_email: 'thisisaninvalidemail@gmail.com',
+    subject: 'Test List',
+    language: 'Test List'
+  },
+  email_type_option: true
+};
 
 // Chimp.createList(options)
 //   .then((res) => console.log('Running createList() !!', res))
 //   .catch((error) => console.log('YOU FUCKEDUP', error));
 
-// Chimp.updateList('dee60118e4', options)
-//   .then((res) => console.log('Running updateList() !! ', res))
-//   .catch((error) => console.log('YOU FUCKEDUP', error));
+Chimp.updateList('dee60118e4', options)
+  .then((res) => console.log('Running updateList() !! ', res))
+  .catch((error) => console.log('YOU FUCKEDUP', error));
 
 // Chimp.deleteList('1e7b476120')
 //   .then((res) => console.log('Running deleeList() !!', res))
