@@ -15,7 +15,7 @@ npm install chimplist
 ```js
 const Chimplist = require('chimplist');
 
-const API_KEY = 'your Mailchimp API';
+const API_KEY = 'your Mailchimp API KEY';
 
 const Chimp = new Chimplist(API_KEY);
 
@@ -25,6 +25,7 @@ const Chimp = new Chimplist(API_KEY);
 Chimp.getAllLists()
   .then((response) => {
     // Work with the `response` from Mailchimp API
+    // `response` is a standard HTTP response(Headers, Body, etc).
   })
   .catch((error) => {
     // Handle any errors while running `getAllLists()`
@@ -46,6 +47,8 @@ functionName();
 
 ## Why Chimplist?
 
+A lot of people use Mailchimp for their `list` feature. Chimplist aims at the people who are beginners or just want to add a `sign up to newsletter` type of form to their website. This library aims to help them get started working with Mailchimp lists with ease and simplicity by making sure:
+
 - You don't have to worry about the Mailchimp's API end points.
 - You don't have to worry about handling authorizations.
 - You don't have to worry about knowing how to make HTTP requests.
@@ -53,33 +56,44 @@ functionName();
 
 Note: At the moment, Chimplist do not support the capability to apply `request query parameters` to your API requests. Maybe in the future that feature might be added, untill then you might like using something like [node-mailchimp](https://www.npmjs.com/package/mailchimp-api-v3).
 
-## All functions available with Chimplist
+## Help Guide to Chimplist's functions
 
-### 1. LISTS
+**`list_id`** - The **list id** of the specific list you are targeting.
 
-- **`getAllLists()`** - Get information about all lists in the account.
+**`options`** - The data object which contains at least the **required** `request body parameters`. Reference links are provided down below along with those specific functions.
 
-- **`getList(list_id)`** - Get information about a specific list.
+**`subscriber_hash`** - According to Mailchimp API documentation: "it is The MD5 hash of the lowercase version of the list member's email address". But it's basically the `id` of the `member`. It looks like `5adgf4de580e68d565db69db203a5c88`.
 
-  - `list_id -> The list id should be a string containing the list id you are targeting.
+### `LIST` Functions
 
 - **`createList(options)`** - Create a new list
 
-  - options -> This must be an Object which contains at least the **required** `request body parameters`. To learn more about what the `options` should contain, refer to Mailchimp API Documentaion [here](https://mailchimp.com/developer/reference/lists/#post_/lists).
+  `options` -> to learn more about what `options` should contain, refer to mailchimp api documentaion [here](https://mailchimp.com/developer/reference/lists/#post_/lists).
+
+* **`getAllLists()`** - Get information about all lists in the account.
+
+* **`getList(list_id)`** - Get information about a specific list.
 
 - **`updateList(list_id, options)`** - Update a specific list
 
-  - list_id -> The list id should be a string containing the list id you are targeting.
-  - options -> This must be an Object which contains at least the **required** `request body parameters`. To learn more about what the `options` should contain, refer to Mailchimp API Documentaion [here](https://mailchimp.com/developer/reference/lists/#patch_/lists/-list_id-).
+  `options` -> To learn more about what `options` should contain, refer to Mailchimp API Documentaion [here](https://mailchimp.com/developer/reference/lists/#patch_/lists/-list_id-).
 
-- **`deleteList(list_id)`** - Delete a specific list
+* **`deleteList(list_id)`** - Delete a specific list
 
-  - list_id -> The list id should be a string containing the list id you are targeting
+### `MEMBER` Functions
 
-### 2. MEMBERS
+- **`addMember(list_id, options)`** - Add a new list member
 
-- getAllMembers
-- getMember
-- addMember
-- updateMember
-- deleteMember
+  `options` -> to learn more about what `options` should contain, refer to mailchimp api documentaion [here](https://mailchimp.com/developer/reference/lists/list-members/#post_/lists/-list_id-/members).
+
+- **`getAllMembers(list_id)`** - Get information about members in a list
+
+- **`getMember(list_id, subscriber_hash)`** - Get information about a specific list memeber.
+
+- **`updateMember(list_id, subscriber_hash, options)`** - Update a specific list memeber.
+
+  `options` -> to learn more about what `options` should contain, refer to mailchimp api documentaion [here](https://mailchimp.com/developer/reference/lists/list-members/#patch_/lists/-list_id-/members/-subscriber_hash-).
+
+- **`archiveMember(list_id, subscriber_hash)`** - Archive a list memeber.
+
+- **`deleteMember(list_id, subscriber_has)`** - Permanently delete a list member.

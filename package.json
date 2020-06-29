@@ -23,7 +23,8 @@
     "mailchimp-audiences",
     "api",
     "lists",
-    "audiences"
+    "audiences",
+    "api-v3"
   ],
   "author": "Shikhar Sharma <ceoshikhar@gmail.com>",
   "license": "ISC",
