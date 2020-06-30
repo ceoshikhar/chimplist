@@ -16,8 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-add": "npm run lint:fix && npm run format",
-      "pre-commit": "npm test"
+      "pre-commit": "npm run lint:fix && npm run format && npm run test"
     }
   },
   "repository": {
