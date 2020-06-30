@@ -1,3 +1,11 @@
+# Dependency directory
 node_modules
+
+# Environment variables file
 .env
+
+# TypeScript to JavaScript compiled build
 dist
+
+# Log files
+*.log
