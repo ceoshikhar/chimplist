@@ -2,7 +2,7 @@
   "name": "chimplist",
   "version": "1.0.0",
   "description": "Wrapper for Mailchimp's API v3 to manage Lists/Audiences and List Members.",
-  "main": "dist/index.js",
+  "main": "dist/chimplist.js",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon lib/index.ts",
@@ -16,8 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix && npm run format",
-      "pre-push": "npm test"
+      "pre-commit": "npm run lint:fix && npm run format && npm run test"
     }
   },
   "repository": {
@@ -44,6 +43,8 @@
   "homepage": "https://github.com/ceoshikhar/chimplist#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
     "@rollup/plugin-typescript": "^5.0.1",
     "@types/jest": "^26.0.3",
     "@types/node": "^14.0.13",
