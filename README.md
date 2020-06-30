@@ -52,7 +52,7 @@ A lot of people use Mailchimp for their `list` feature. Chimplist aims at the pe
 - You don't have to worry about the Mailchimp's API end points.
 - You don't have to worry about handling authorizations.
 - You don't have to worry about knowing how to make HTTP requests.
-- You can use it on your front-end or back-end with just few lines.
+- You can use it on your back-end with just few lines of code.
 
 Note: At the moment, Chimplist do not support the capability to apply `request query parameters` to your API requests. Maybe in the future that feature might be added, untill then you might like using something like [node-mailchimp](https://www.npmjs.com/package/mailchimp-api-v3).
 
@@ -64,36 +64,36 @@ Note: At the moment, Chimplist do not support the capability to apply `request q
 
 **`subscriber_hash`** - According to Mailchimp API documentation: "it is The MD5 hash of the lowercase version of the list member's email address". But it's basically the `id` of the `member`. It looks like `5adgf4de580e68d565db69db203a5c88`.
 
-### `LIST` Functions
+### LIST Functions
 
-- **`createList(options)`** - Create a new list
+- **createList(options)** - Create a new list
 
   `options` -> to learn more about what `options` should contain, refer to mailchimp api documentaion [here](https://mailchimp.com/developer/reference/lists/#post_/lists).
 
-* **`getAllLists()`** - Get information about all lists in the account.
+* **getAllLists()** - Get information about all lists in the account.
 
-* **`getList(list_id)`** - Get information about a specific list.
+* **getList(list_id)** - Get information about a specific list.
 
-- **`updateList(list_id, options)`** - Update a specific list
+- **updateList(list_id, options)** - Update a specific list
 
   `options` -> To learn more about what `options` should contain, refer to Mailchimp API Documentaion [here](https://mailchimp.com/developer/reference/lists/#patch_/lists/-list_id-).
 
-* **`deleteList(list_id)`** - Delete a specific list
+* **deleteList(list_id)** - Delete a specific list
 
-### `MEMBER` Functions
+### MEMBER Functions
 
-- **`addMember(list_id, options)`** - Add a new list member
+- **addMember(list_id, options)** - Add a new list member
 
   `options` -> to learn more about what `options` should contain, refer to mailchimp api documentaion [here](https://mailchimp.com/developer/reference/lists/list-members/#post_/lists/-list_id-/members).
 
-- **`getAllMembers(list_id)`** - Get information about members in a list
+- **getAllMembers(list_id)** - Get information about members in a list
 
-- **`getMember(list_id, subscriber_hash)`** - Get information about a specific list memeber.
+- **getMember(list_id, subscriber_hash)** - Get information about a specific list memeber.
 
-- **`updateMember(list_id, subscriber_hash, options)`** - Update a specific list memeber.
+- **updateMember(list_id, subscriber_hash, options)** - Update a specific list memeber.
 
   `options` -> to learn more about what `options` should contain, refer to mailchimp api documentaion [here](https://mailchimp.com/developer/reference/lists/list-members/#patch_/lists/-list_id-/members/-subscriber_hash-).
 
-- **`archiveMember(list_id, subscriber_hash)`** - Archive a list memeber.
+- **archiveMember(list_id, subscriber_hash)** - Archive a list memeber.
 
-- **`deleteMember(list_id, subscriber_has)`** - Permanently delete a list member.
+- **deleteMember(list_id, subscriber_has)** - Permanently delete a list member.
