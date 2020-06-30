@@ -94,7 +94,7 @@ export const addMember = async (
   });
 };
 
-// Get information about members in a list
+// Get information about all members in a list
 export const getAllMembers = async (
   API_KEY: string,
   DATA_CENTER: string,
@@ -176,14 +176,3 @@ export const deleteMember = async (
 };
 
 // TODO: Refactor the `LIST` and `MEMBER` functions into one function.
-
-// LISTS is the function aiming to refactor the code
-export const LISTS = async (
-  API_KEY: string,
-  DATA_CENTER: string,
-  METHOD: string,
-  LIST_ID?: string,
-  OPTIONS?
-): Promise<any> => {
-  return;
-};
