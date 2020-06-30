@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// TODO: Refactor the `LIST` and `MEMBER` functions into one function.
+
 // Create a new list
 export const createList = async (
   API_KEY: string,
@@ -174,5 +176,3 @@ export const deleteMember = async (
     }
   });
 };
-
-// TODO: Refactor the `LIST` and `MEMBER` functions into one function.
