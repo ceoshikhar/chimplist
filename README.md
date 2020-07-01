@@ -47,18 +47,18 @@ functionName();
 
 ## Why Chimplist?
 
-A lot of people use Mailchimp for their `list` feature. Chimplist aims at the people who are beginners or just want to add a `sign up to newsletter` type of form to their website. This library aims to help them get started working with Mailchimp lists with ease and simplicity by making sure:
+A lot of people use Mailchimp for their `list` feature. Chimplist aims at the people who quickly just want to add a `sign up to newsletter` type of form to their website. This library aims to help them get started working with Mailchimp lists with ease and simplicity by making sure:
 
 - You don't have to worry about the Mailchimp's API end points.
 - You don't have to worry about handling authorizations.
 - You don't have to worry about knowing how to make HTTP requests.
 - You can use it on your back-end with just few lines of code.
 
-Note: At the moment, Chimplist do not support the capability to apply `request query parameters` to your API requests. Maybe in the future that feature might be added, untill then you might like using something like [node-mailchimp](https://www.npmjs.com/package/mailchimp-api-v3).
+Note: At the moment, Chimplist do not support the capability to apply `request query parameters` to your API requests for keeping things simple. Maybe in the future that feature might be added, untill then you might like using something like [node-mailchimp](https://www.npmjs.com/package/mailchimp-api-v3).
 
-## Help Guide to Chimplist's functions
+## Chimplist's Functions Guide
 
-**`list_id`** - The **list id** of the specific list you are targeting.
+**`list_id`** - The **list id**(also known as **Audience ID**) of the specific list you are targeting. Can be found in Audience -> Settings -> Audience name and campaign defaults.
 
 **`options`** - The data object which contains at least the **required** `request body parameters`. Reference links are provided down below along with those specific functions.
 
