@@ -1,6 +1,6 @@
 {
   "name": "chimplist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrapper for Mailchimp's API v3 to manage Lists/Audiences and List Members.",
   "main": "dist/chimplist.js",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix && npm run format && npm run test"
+      "pre-commit": "npm run lint:fix && npm run format"
     }
   },
   "repository": {
