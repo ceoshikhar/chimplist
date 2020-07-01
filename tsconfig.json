@@ -5,7 +5,8 @@
     "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
     "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
     "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
-    "skipLibCheck": true /* Skip type checking of declaration files. */
+    "skipLibCheck": true /* Skip type checking of declaration files. */,
+    "removeComments": true
   },
   "exclude": ["node_modules", "test"],
   "include": ["./lib/**/*"]
