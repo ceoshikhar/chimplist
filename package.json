@@ -1,16 +1,23 @@
 {
   "name": "chimplist",
   "version": "1.0.0",
-  "description": "Mailchimp's API v3 wrapper for Lists/Audiences.",
-  "main": "dist/index.js",
+  "description": "Wrapper for Mailchimp's API v3 to manage Lists/Audiences and List Members.",
+  "main": "dist/chimplist.js",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon lib/index.ts",
-    "build": "tsc -p .",
-    "test": "npm run build && node dist/test.js",
+    "prebuild": "rm -rf dist",
+    "test:all": "jest --verbose",
+    "test": "jest",
+    "build": "echo \"Building Chimplist...\" && rollup -c rollup.config.js",
     "format": "prettier --config .prettierrc 'lib/**/*.ts'  --write",
     "lint": "eslint  --ext .ts . ",
-    "fix": "eslint  --fix --ext .ts ."
+    "lint:fix": "eslint  --fix --ext .ts ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:fix && npm run format && npm run test"
+    }
   },
   "repository": {
     "type": "git",
@@ -19,28 +26,41 @@
   "keywords": [
     "mailchimp",
     "mailchimp-api",
+    "mailchimp-api-v3",
+    "mailchimp-api-wrapper",
     "mailchimp-lists",
     "mailchimp-audiences",
     "api",
     "lists",
-    "audiences"
+    "audiences",
+    "api-v3"
   ],
   "author": "Shikhar Sharma <ceoshikhar@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ceoshikhar/chimplist/issues"
   },
   "homepage": "https://github.com/ceoshikhar/chimplist#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "@rollup/plugin-typescript": "^5.0.1",
+    "@types/jest": "^26.0.3",
     "@types/node": "^14.0.13",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
     "@typescript-eslint/parser": "^3.4.0",
     "eslint": "^7.3.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
+    "rollup": "^2.18.1",
+    "ts-jest": "^26.1.1",
     "ts-node": "^8.10.2",
+    "tslib": "^2.0.0",
     "typescript": "^3.9.5"
   },
   "dependencies": {

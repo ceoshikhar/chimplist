@@ -1,6 +1,4 @@
-import TestAPI from './test';
-import ACTIONS from './actions';
-import * as dotenv from 'dotenv';
+import * as ACTIONS from './actions';
 
 export default class Chimplist {
   private API_KEY: string;
@@ -10,50 +8,88 @@ export default class Chimplist {
     const api_key_regex = /.+\-.+/;
 
     if (!api_key_regex.test(api_key)) {
-      console.error('MISSING OF INVALID API KEY: ' + api_key);
-      throw new Error('missing or invalid api key: ' + api_key);
+      throw new Error('MISSING OR INVALID API KEY: ' + api_key);
     }
 
     this.API_KEY = api_key;
     this.DATA_CENTER = this.API_KEY.split('-')[1].trim();
   }
 
+  // createList - create a new list
+  createList = async (options): Promise<any> => {
+    if (options === null) {
+      throw new Error('INVALID or MISSING ARGUMENTS');
+    }
+    return ACTIONS.createList(this.API_KEY, this.DATA_CENTER, options);
+  };
+
   // getLists - get all the lists
-  getLists = async (): Promise<any> => {
-    const promise = ACTIONS.getLists(this.API_KEY, this.DATA_CENTER);
-    return promise;
+  getAllLists = async (): Promise<any> => {
+    return ACTIONS.getAllLists(this.API_KEY, this.DATA_CENTER);
   };
 
   // getList - get a specific list by `list_id`
   getList = async (list_id: string): Promise<any> => {
-    const promise = ACTIONS.getList(this.API_KEY, this.DATA_CENTER, list_id);
-    return promise;
+    return ACTIONS.getList(this.API_KEY, this.DATA_CENTER, list_id);
   };
 
-  test = (): void => {
-    console.log('From CLASS', this.API_KEY);
-    console.log('From CLASS', this.DATA_CENTER);
-    TestAPI(this.API_KEY, this.DATA_CENTER);
+  // updateList - update a specific list
+  updateList = async (list_id: string, options): Promise<any> => {
+    return ACTIONS.updateList(this.API_KEY, this.DATA_CENTER, list_id, options);
+  };
+
+  // deleteList - delete a specific list
+  deleteList = async (list_id: string): Promise<any> => {
+    return ACTIONS.deleteList(this.API_KEY, this.DATA_CENTER, list_id);
+  };
+
+  // addMember - add a new list member
+  addMember = async (list_id: string, options): Promise<any> => {
+    return ACTIONS.addMember(this.API_KEY, this.DATA_CENTER, list_id, options);
+  };
+
+  // getAllMembers - get information about members in a list
+  getAllMembers = async (list_id: string): Promise<any> => {
+    return ACTIONS.getAllMembers(this.API_KEY, this.DATA_CENTER, list_id);
+  };
+
+  // getMember - get information about a specific list member.
+  getMember = async (list_id: string, sub_hash: string): Promise<any> => {
+    return ACTIONS.getMember(this.API_KEY, this.DATA_CENTER, list_id, sub_hash);
+  };
+
+  // updateMember - update a specific list member
+  updateMember = async (
+    list_id: string,
+    sub_hash: string,
+    options
+  ): Promise<any> => {
+    return ACTIONS.updateMember(
+      this.API_KEY,
+      this.DATA_CENTER,
+      list_id,
+      sub_hash,
+      options
+    );
+  };
+
+  // archiveMember - archive a list member
+  archiveMember = async (list_id: string, sub_hash: string): Promise<any> => {
+    return ACTIONS.archiveMember(
+      this.API_KEY,
+      this.DATA_CENTER,
+      list_id,
+      sub_hash
+    );
+  };
+
+  // deleteMember - permanently delete a list memeber
+  deleteMember = async (list_id: string, sub_hash: string): Promise<any> => {
+    return ACTIONS.deleteMember(
+      this.API_KEY,
+      this.DATA_CENTER,
+      list_id,
+      sub_hash
+    );
   };
 }
-
-/* THIS IS
- * FOR TESTING
- * THE CHIMPLIST Lib */
-
-dotenv.config();
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const API_KEY: string = process.env.API_KEY;
-
-const Chimp = new Chimplist(API_KEY);
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const list_id: string = process.env.LIST_ID;
-
-Chimp.getList(list_id)
-  .then((res) => console.log('YOUSUCK', res.data.name))
-  .catch((error) => console.log('YOU FUCKEDUP', error));
-
-Chimp.test();
