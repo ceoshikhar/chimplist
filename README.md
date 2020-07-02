@@ -1,6 +1,15 @@
 # chimplist
 
-Chimplist makes it very easy and simple to work with Mailchimp's API v3 to manage your Lists(also called Audiences) and their Members.
+<p align="center">
+<img alt="npm" src="https://img.shields.io/npm/dt/chimplist">
+<img alt="Travis (.org)" src="https://img.shields.io/travis/ceoshikhar/chimplist">
+<img alt="npm" src="https://img.shields.io/npm/v/chimplist">
+<a href='https://github.com/ceoshikhar'>
+<img alt="GitHub followers" src="https://img.shields.io/github/followers/ceoshikhar?style=social">
+</a>
+</p>
+
+> Chimplist makes it very easy and simple to work with Mailchimp's API v3 to manage your Lists(also called Audiences) and their Members.
 
 ## How to install?
 
