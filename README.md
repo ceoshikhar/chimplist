@@ -9,7 +9,7 @@
 </a>
 </p>
 
-> Chimplist makes it very easy and simple to work with Mailchimp's API v3 to manage your Lists(also called Audiences) and their Members.
+Chimplist makes it very easy and simple to work with Mailchimp's API v3 to manage your Lists(also called Audiences) and their Members.
 
 ## How to install?
 
