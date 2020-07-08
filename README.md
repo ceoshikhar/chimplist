@@ -4,8 +4,8 @@
 <img alt="npm" src="https://img.shields.io/npm/dt/chimplist">
 <img alt="Travis (.org)" src="https://img.shields.io/travis/ceoshikhar/chimplist">
 <img alt="npm" src="https://img.shields.io/npm/v/chimplist">
-<a href='https://github.com/ceoshikhar'>
-<img alt="GitHub followers" src="https://img.shields.io/github/followers/ceoshikhar?style=social">
+<a href='https://github.com/ceoshikhar/chimplist'>
+<img alt="GitHub stars" src="https://img.shields.io/github/stars/ceoshikhar/chimplist?style=social">
 </a>
 </p>
 
@@ -22,9 +22,9 @@ npm install chimplist
 #### \*ES6 Syntax
 
 ```js
-const Chimplist = require('chimplist');
+const Chimplist = require("chimplist");
 
-const API_KEY = 'your Mailchimp API KEY';
+const API_KEY = "your Mailchimp API KEY";
 
 const Chimp = new Chimplist(API_KEY);
 
@@ -67,11 +67,11 @@ Note: At the moment, Chimplist do not support the capability to apply `request q
 
 ## Chimplist's Functions Guide
 
-**`list_id`** - The **list id**(also known as **Audience ID**) of the specific list you are targeting. Can be found in Audience -> Settings -> Audience name and campaign defaults.
+**`list_id`** - The **list id**(also known as **Audience ID**) of the specific list you are targeting. Can be found in Audience -> Settings -> Audience name and campaign defaults. Data type is **`string`**.
 
-**`options`** - The data object which contains at least the **required** `request body parameters`. Reference links are provided down below along with those specific functions.
+**`options`** - The data object which contains at least the **required** `request body parameters`. Reference links are provided down below along with those specific functions. Data type is **`object`**.
 
-**`subscriber_hash`** - According to Mailchimp API documentation: "it is The MD5 hash of the lowercase version of the list member's email address". But it's basically the `id` of the `member`. It looks like `5adgf4de580e68d565db69db203a5c88`.
+**`subscriber_hash`** - According to Mailchimp API documentation: "it is The MD5 hash of the lowercase version of the list member's email address". But it's basically the `id` of the `member`. It looks like `5adgf4de580e68d565db69db203a5c88`. Data type is **`string`**.
 
 ### LIST Functions
 
@@ -105,4 +105,4 @@ Note: At the moment, Chimplist do not support the capability to apply `request q
 
 - **archiveMember(list_id, subscriber_hash)** - Archive a list memeber.
 
-- **deleteMember(list_id, subscriber_has)** - Permanently delete a list member.
+- **deleteMember(list_id, subscriber_hash)** - Permanently delete a list member.

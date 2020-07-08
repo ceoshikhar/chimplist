@@ -1,5 +1,5 @@
-import Chimplist from '../lib';
-import * as dotenv from 'dotenv';
+import Chimplist from "../lib";
+import * as dotenv from "dotenv";
 
 // Get access to .env file
 dotenv.config();
@@ -14,44 +14,44 @@ const list_id: string = process.env.LIST_ID;
 
 // options - request body parameters containing at least required fileds
 const options = {
-  name: 'Test List',
+  name: "Test List",
   contact: {
-    company: 'Test List',
-    address1: 'Test List',
-    address2: 'Test List',
-    city: 'Test List',
-    state: 'Test List',
-    zip: 'Test List',
-    country: 'Test List',
-    phone: 'Test List'
+    company: "Test List",
+    address1: "Test List",
+    address2: "Test List",
+    city: "Test List",
+    state: "Test List",
+    zip: "Test List",
+    country: "Test List",
+    phone: "Test List",
   },
-  permission_reminder: 'Test List',
+  permission_reminder: "Test List",
   campaign_defaults: {
-    from_name: 'Test List',
-    from_email: 'thisisaninvalidemail@gmail.com',
-    subject: 'Test List',
-    language: 'Test List'
+    from_name: "Test List",
+    from_email: "thisisaninvalidemail@gmail.com",
+    subject: "Test List",
+    language: "Test List",
   },
-  email_type_option: true
+  email_type_option: true,
 };
 
 // Test will break if the list name is not `Test List`
-test('get all the lists by executing getAllLists()', async () => {
+test("get all the lists by executing getAllLists()", async () => {
   return Chimp.getAllLists().then((res) =>
-    expect(res.data.lists[0].name).toBe('Test List')
+    expect(res.data.lists[0].name).toBe("Test List")
   );
 });
 
 // Test will break if the list name is not `Test List`
-test('get a specific list by executing getList()', async () => {
+test("get a specific list by executing getList()", async () => {
   return Chimp.getList(list_id).then((res) =>
-    expect(res.data.name).toBe('Test List')
+    expect(res.data.name).toBe("Test List")
   );
 });
 
-test('update a specific list by executing updateList()', async () => {
+test("update a specific list by executing updateList()", async () => {
   return Chimp.updateList(list_id, options).then((res) =>
-    expect(res.data.name).toBe('Test List')
+    expect(res.data.name).toBe("Test List")
   );
 });
 
@@ -67,7 +67,7 @@ test('update a specific list by executing updateList()', async () => {
 // So if I successfully try to send a request to create a new list, I should
 // catch an error with status code `403`(Forbidden).
 // That is the logic behind this test.
-test('create a list by executing createList()', async () => {
+test("create a list by executing createList()", async () => {
   return Chimp.createList(options).catch((err) =>
     expect(err.response.data.status).toBe(403)
   );
@@ -77,8 +77,8 @@ test('create a list by executing createList()', async () => {
 // So if I successfully try to delete a list that does not exist in my
 // account, I should catch an error with status code `404`(Not Found).
 // That is the logic behind this test.
-test('delete a list by executing deleteList()', async () => {
-  return Chimp.deleteList('invalidListID').catch((err) =>
+test("delete a list by executing deleteList()", async () => {
+  return Chimp.deleteList("invalidListID").catch((err) =>
     expect(err.response.data.status).toBe(404)
   );
 });

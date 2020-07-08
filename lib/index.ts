@@ -1,3 +1,3 @@
-import Chimplist from './Chimplist';
+import Chimplist from "./Chimplist";
 
 export default Chimplist;
