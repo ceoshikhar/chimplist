@@ -1,6 +1,6 @@
 {
     "name": "chimplist",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Wrapper for Mailchimp's API v3 to manage Lists/Audiences and List Members.",
     "main": "dist/chimplist.js",
     "scripts": {
